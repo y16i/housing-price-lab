@@ -1,0 +1,49 @@
+{
+  "name": "housing-price-lab",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write \"app/**/*.{ts,tsx,json,css,md}\" --log-level error",
+    "format:check": "prettier --check \"app/**/*.{ts,tsx,json,css,md}\"",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:seed": "tsx scripts/seed.ts",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.29.0",
+    "echarts": "^6.0.0",
+    "echarts-for-react": "^3.0.5",
+    "next": "^15.0.0",
+    "pg": "^8.11.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.3.0",
+    "@commitlint/config-conventional": "^20.3.0",
+    "@types/node": "^20.10.0",
+    "@types/pg": "^8.11.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.52.0",
+    "@typescript-eslint/parser": "^8.52.0",
+    "autoprefixer": "^10.4.0",
+    "drizzle-kit": "^0.20.0",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.1.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "husky": "^9.1.7",
+    "postcss": "^8.4.0",
+    "prettier": "^3.7.4",
+    "tailwindcss": "^3.4.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0",
+    "typescript-eslint": "^8.52.0"
+  }
+}
