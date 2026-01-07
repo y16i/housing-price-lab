@@ -10,7 +10,8 @@ module.exports = [
       'out/',
       'dist/',
       'build/',
-      '.git/'
+      '.git/',
+      'coverage/'
     ]
   },
   js.configs.recommended,
