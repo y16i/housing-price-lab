@@ -108,9 +108,7 @@ describe('/api/houses route', () => {
 
       const result = filterDummyData({ minYear, maxYear });
 
-      expect(
-        result.every((h: any) => h.age_years >= minYear && h.age_years <= maxYear)
-      ).toBe(true);
+      expect(result.every((h: any) => h.age_years >= minYear && h.age_years <= maxYear)).toBe(true);
     });
 
     it('should handle numeric floor values', () => {
@@ -157,7 +155,7 @@ describe('/api/houses route', () => {
 
   describe('CORS and response format', () => {
     it('should have proper structure for API response', () => {
-      const filtered = (dummyData as any[]);
+      const filtered = dummyData as any[];
       expect(Array.isArray(filtered)).toBe(true);
 
       if (filtered.length > 0) {
@@ -168,14 +166,7 @@ describe('/api/houses route', () => {
 
     it('should preserve all data fields in response', () => {
       const sample = (dummyData as any)[0];
-      const expectedKeys = [
-        'id',
-        'age_years',
-        'layout',
-        'location',
-        'floor',
-        'price_million_yen',
-      ];
+      const expectedKeys = ['id', 'age_years', 'layout', 'location', 'floor', 'price_million_yen'];
 
       expectedKeys.forEach((key) => {
         expect(sample).toHaveProperty(key);
