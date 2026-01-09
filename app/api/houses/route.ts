@@ -36,11 +36,11 @@ export async function GET(request: NextRequest) {
           return false;
         }
 
-        if (minYear !== null && house.age_years < parseInt(minYear)) {
+        if (minYear && house.age_years < parseInt(minYear)) {
           return false;
         }
 
-        if (maxYear !== null && house.age_years > parseInt(maxYear)) {
+        if (maxYear && house.age_years > parseInt(maxYear)) {
           return false;
         }
 
@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
           return false;
         }
 
-        if (floor !== null && house.floor !== parseInt(floor)) {
+        if (floor && house.floor !== parseInt(floor)) {
           return false;
         }
 
@@ -75,11 +75,11 @@ export async function GET(request: NextRequest) {
           conditions.push(eq(houses.layout, layout));
         }
 
-        if (minYear !== null) {
+        if (minYear) {
           conditions.push(gte(houses.age_years, parseInt(minYear)));
         }
 
-        if (maxYear !== null) {
+        if (maxYear) {
           conditions.push(lte(houses.age_years, parseInt(maxYear)));
         }
 
@@ -87,7 +87,7 @@ export async function GET(request: NextRequest) {
           conditions.push(eq(houses.location, location));
         }
 
-        if (floor !== null) {
+        if (floor) {
           conditions.push(eq(houses.floor, parseInt(floor)));
         }
 

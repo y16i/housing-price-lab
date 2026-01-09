@@ -6,8 +6,11 @@ async function seed() {
   try {
     console.log("Starting seed...");
     
-    // Insert dummy data
-    await db.insert(houses).values(dummyData);
+    // Insert dummy data with conflict handling
+    await db
+      .insert(houses)
+      .values(dummyData)
+      .onConflictDoNothing();
     
     console.log("Seed completed successfully!");
   } catch (error) {

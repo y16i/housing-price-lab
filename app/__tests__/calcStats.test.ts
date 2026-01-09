@@ -2,9 +2,9 @@ import { calcStats } from '../lib/calcStats';
 
 describe('calcStats', () => {
   const mockHouses = [
-    { price_million_yen: 10, layout: '1DK', year: 2020, location: 'Tokyo', floor: 1 },
-    { price_million_yen: 15, layout: '2LDK', year: 2019, location: 'Tokyo', floor: 2 },
-    { price_million_yen: 20, layout: '3LDK', year: 2021, location: 'Tokyo', floor: 3 },
+    { id: 1, price_million_yen: 10, layout: '1DK', age_years: 2020, location: 'Tokyo', floor: 1 },
+    { id: 2, price_million_yen: 15, layout: '2LDK', age_years: 2019, location: 'Tokyo', floor: 2 },
+    { id: 3, price_million_yen: 20, layout: '3LDK', age_years: 2021, location: 'Tokyo', floor: 3 },
   ];
 
   it('should calculate correct average', () => {

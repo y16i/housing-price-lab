@@ -1,11 +1,11 @@
 # Housing Price Lab MVP
 
-A Next.js application for analyzing housing prices with filtering and visualization using Recharts.
+A Next.js application for analyzing housing prices with filtering and visualization using Echarts.
 
 ## Tech Stack
 
 - **Frontend**: Next.js 15+, React 19, TypeScript, Tailwind CSS
-- **Charts**: Recharts
+- **Charts**: Echarts
 - **Database**: PostgreSQL with Drizzle ORM (optional)
 - **Deployment**: GCP Cloud Run
 
@@ -220,7 +220,7 @@ Try these filter combinations:
 
 - Stateless API design suitable for serverless
 - Efficient filtering with early returns
-- Optimized Recharts visualization
+- Optimized Echarts visualization
 - CSS-in-JS with Tailwind for minimal bundle
 - NextJS automatic code splitting
 
