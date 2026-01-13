@@ -1,0 +1,802 @@
+[
+  {
+    "id": 1,
+    "age_years": 5,
+    "layout": "2LDK",
+    "location": "Shibuya, Tokyo",
+    "floor": 10,
+    "price_million_yen": 68
+  },
+  {
+    "id": 2,
+    "age_years": 15,
+    "layout": "3LDK",
+    "location": "Kita, Osaka",
+    "floor": 7,
+    "price_million_yen": 52
+  },
+  {
+    "id": 3,
+    "age_years": 25,
+    "layout": "1DK",
+    "location": "Chuo, Sapporo",
+    "floor": 3,
+    "price_million_yen": 18
+  },
+  {
+    "id": 4,
+    "age_years": 8,
+    "layout": "4LDK",
+    "location": "Kohoku, Yokohama",
+    "floor": 2,
+    "price_million_yen": 43
+  },
+  {
+    "id": 5,
+    "age_years": 12,
+    "layout": "2LDK",
+    "location": "Naka, Nagoya",
+    "floor": 12,
+    "price_million_yen": 35
+  },
+  {
+    "id": 6,
+    "age_years": 3,
+    "layout": "1LDK",
+    "location": "Hakata, Fukuoka",
+    "floor": 5,
+    "price_million_yen": 27
+  },
+  {
+    "id": 7,
+    "age_years": 20,
+    "layout": "3DK",
+    "location": "Sakyo, Kyoto",
+    "floor": 1,
+    "price_million_yen": 24
+  },
+  {
+    "id": 8,
+    "age_years": 30,
+    "layout": "5LDK",
+    "location": "Aoba, Sendai",
+    "floor": 2,
+    "price_million_yen": 31
+  },
+  {
+    "id": 9,
+    "age_years": 7,
+    "layout": "2LDK",
+    "location": "Chuo, Kobe",
+    "floor": 9,
+    "price_million_yen": 36
+  },
+  {
+    "id": 10,
+    "age_years": 18,
+    "layout": "3LDK",
+    "location": "Omiya, Saitama",
+    "floor": 6,
+    "price_million_yen": 29
+  },
+  {
+    "id": 11,
+    "age_years": 2,
+    "layout": "1LDK",
+    "location": "Shibuya, Tokyo",
+    "floor": 8,
+    "price_million_yen": 72
+  },
+  {
+    "id": 12,
+    "age_years": 10,
+    "layout": "2LDK",
+    "location": "Kita, Osaka",
+    "floor": 4,
+    "price_million_yen": 48
+  },
+  {
+    "id": 13,
+    "age_years": 22,
+    "layout": "3LDK",
+    "location": "Chuo, Sapporo",
+    "floor": 1,
+    "price_million_yen": 22
+  },
+  {
+    "id": 14,
+    "age_years": 6,
+    "layout": "2LDK",
+    "location": "Kohoku, Yokohama",
+    "floor": 11,
+    "price_million_yen": 51
+  },
+  {
+    "id": 15,
+    "age_years": 14,
+    "layout": "3DK",
+    "location": "Naka, Nagoya",
+    "floor": 3,
+    "price_million_yen": 32
+  },
+  {
+    "id": 16,
+    "age_years": 4,
+    "layout": "1DK",
+    "location": "Hakata, Fukuoka",
+    "floor": 6,
+    "price_million_yen": 25
+  },
+  {
+    "id": 17,
+    "age_years": 19,
+    "layout": "4LDK",
+    "location": "Sakyo, Kyoto",
+    "floor": 2,
+    "price_million_yen": 28
+  },
+  {
+    "id": 18,
+    "age_years": 28,
+    "layout": "2LDK",
+    "location": "Aoba, Sendai",
+    "floor": 5,
+    "price_million_yen": 33
+  },
+  {
+    "id": 19,
+    "age_years": 9,
+    "layout": "3LDK",
+    "location": "Chuo, Kobe",
+    "floor": 7,
+    "price_million_yen": 40
+  },
+  {
+    "id": 20,
+    "age_years": 16,
+    "layout": "1LDK",
+    "location": "Omiya, Saitama",
+    "floor": 2,
+    "price_million_yen": 26
+  },
+  {
+    "id": 21,
+    "age_years": 3,
+    "layout": "3LDK",
+    "location": "Shibuya, Tokyo",
+    "floor": 12,
+    "price_million_yen": 75
+  },
+  {
+    "id": 22,
+    "age_years": 11,
+    "layout": "2LDK",
+    "location": "Kita, Osaka",
+    "floor": 5,
+    "price_million_yen": 49
+  },
+  {
+    "id": 23,
+    "age_years": 24,
+    "layout": "1DK",
+    "location": "Chuo, Sapporo",
+    "floor": 2,
+    "price_million_yen": 19
+  },
+  {
+    "id": 24,
+    "age_years": 7,
+    "layout": "4LDK",
+    "location": "Kohoku, Yokohama",
+    "floor": 3,
+    "price_million_yen": 45
+  },
+  {
+    "id": 25,
+    "age_years": 13,
+    "layout": "3DK",
+    "location": "Naka, Nagoya",
+    "floor": 4,
+    "price_million_yen": 30
+  },
+  {
+    "id": 26,
+    "age_years": 5,
+    "layout": "2LDK",
+    "location": "Hakata, Fukuoka",
+    "floor": 7,
+    "price_million_yen": 28
+  },
+  {
+    "id": 27,
+    "age_years": 21,
+    "layout": "3LDK",
+    "location": "Sakyo, Kyoto",
+    "floor": 3,
+    "price_million_yen": 25
+  },
+  {
+    "id": 28,
+    "age_years": 29,
+    "layout": "1LDK",
+    "location": "Aoba, Sendai",
+    "floor": 6,
+    "price_million_yen": 32
+  },
+  {
+    "id": 29,
+    "age_years": 8,
+    "layout": "4LDK",
+    "location": "Chuo, Kobe",
+    "floor": 8,
+    "price_million_yen": 38
+  },
+  {
+    "id": 30,
+    "age_years": 17,
+    "layout": "2LDK",
+    "location": "Omiya, Saitama",
+    "floor": 3,
+    "price_million_yen": 27
+  },
+  {
+    "id": 31,
+    "age_years": 1,
+    "layout": "3LDK",
+    "location": "Shibuya, Tokyo",
+    "floor": 9,
+    "price_million_yen": 80
+  },
+  {
+    "id": 32,
+    "age_years": 12,
+    "layout": "1LDK",
+    "location": "Kita, Osaka",
+    "floor": 6,
+    "price_million_yen": 46
+  },
+  {
+    "id": 33,
+    "age_years": 23,
+    "layout": "2LDK",
+    "location": "Chuo, Sapporo",
+    "floor": 1,
+    "price_million_yen": 20
+  },
+  {
+    "id": 34,
+    "age_years": 9,
+    "layout": "3LDK",
+    "location": "Kohoku, Yokohama",
+    "floor": 10,
+    "price_million_yen": 50
+  },
+  {
+    "id": 35,
+    "age_years": 15,
+    "layout": "4LDK",
+    "location": "Naka, Nagoya",
+    "floor": 5,
+    "price_million_yen": 34
+  },
+  {
+    "id": 36,
+    "age_years": 6,
+    "layout": "1DK",
+    "location": "Hakata, Fukuoka",
+    "floor": 8,
+    "price_million_yen": 26
+  },
+  {
+    "id": 37,
+    "age_years": 20,
+    "layout": "2LDK",
+    "location": "Sakyo, Kyoto",
+    "floor": 4,
+    "price_million_yen": 26
+  },
+  {
+    "id": 38,
+    "age_years": 27,
+    "layout": "3DK",
+    "location": "Aoba, Sendai",
+    "floor": 7,
+    "price_million_yen": 30
+  },
+  {
+    "id": 39,
+    "age_years": 10,
+    "layout": "3LDK",
+    "location": "Chuo, Kobe",
+    "floor": 9,
+    "price_million_yen": 39
+  },
+  {
+    "id": 40,
+    "age_years": 19,
+    "layout": "1LDK",
+    "location": "Omiya, Saitama",
+    "floor": 4,
+    "price_million_yen": 28
+  },
+  {
+    "id": 41,
+    "age_years": 2,
+    "layout": "4LDK",
+    "location": "Shibuya, Tokyo",
+    "floor": 7,
+    "price_million_yen": 70
+  },
+  {
+    "id": 42,
+    "age_years": 13,
+    "layout": "2LDK",
+    "location": "Kita, Osaka",
+    "floor": 7,
+    "price_million_yen": 50
+  },
+  {
+    "id": 43,
+    "age_years": 26,
+    "layout": "1DK",
+    "location": "Chuo, Sapporo",
+    "floor": 3,
+    "price_million_yen": 17
+  },
+  {
+    "id": 44,
+    "age_years": 8,
+    "layout": "3LDK",
+    "location": "Kohoku, Yokohama",
+    "floor": 9,
+    "price_million_yen": 52
+  },
+  {
+    "id": 45,
+    "age_years": 14,
+    "layout": "2LDK",
+    "location": "Naka, Nagoya",
+    "floor": 6,
+    "price_million_yen": 33
+  },
+  {
+    "id": 46,
+    "age_years": 4,
+    "layout": "1LDK",
+    "location": "Hakata, Fukuoka",
+    "floor": 4,
+    "price_million_yen": 29
+  },
+  {
+    "id": 47,
+    "age_years": 22,
+    "layout": "3DK",
+    "location": "Sakyo, Kyoto",
+    "floor": 5,
+    "price_million_yen": 23
+  },
+  {
+    "id": 48,
+    "age_years": 31,
+    "layout": "4LDK",
+    "location": "Aoba, Sendai",
+    "floor": 1,
+    "price_million_yen": 29
+  },
+  {
+    "id": 49,
+    "age_years": 7,
+    "layout": "2LDK",
+    "location": "Chuo, Kobe",
+    "floor": 6,
+    "price_million_yen": 37
+  },
+  {
+    "id": 50,
+    "age_years": 16,
+    "layout": "3LDK",
+    "location": "Omiya, Saitama",
+    "floor": 5,
+    "price_million_yen": 30
+  },
+  {
+    "id": 51,
+    "age_years": 4,
+    "layout": "2LDK",
+    "location": "Shibuya, Tokyo",
+    "floor": 11,
+    "price_million_yen": 66
+  },
+  {
+    "id": 52,
+    "age_years": 14,
+    "layout": "3LDK",
+    "location": "Kita, Osaka",
+    "floor": 8,
+    "price_million_yen": 51
+  },
+  {
+    "id": 53,
+    "age_years": 20,
+    "layout": "1DK",
+    "location": "Chuo, Sapporo",
+    "floor": 4,
+    "price_million_yen": 21
+  },
+  {
+    "id": 54,
+    "age_years": 10,
+    "layout": "4LDK",
+    "location": "Kohoku, Yokohama",
+    "floor": 2,
+    "price_million_yen": 44
+  },
+  {
+    "id": 55,
+    "age_years": 11,
+    "layout": "2LDK",
+    "location": "Naka, Nagoya",
+    "floor": 7,
+    "price_million_yen": 36
+  },
+  {
+    "id": 56,
+    "age_years": 3,
+    "layout": "1DK",
+    "location": "Hakata, Fukuoka",
+    "floor": 3,
+    "price_million_yen": 24
+  },
+  {
+    "id": 57,
+    "age_years": 19,
+    "layout": "3LDK",
+    "location": "Sakyo, Kyoto",
+    "floor": 2,
+    "price_million_yen": 27
+  },
+  {
+    "id": 58,
+    "age_years": 28,
+    "layout": "2LDK",
+    "location": "Aoba, Sendai",
+    "floor": 8,
+    "price_million_yen": 34
+  },
+  {
+    "id": 59,
+    "age_years": 6,
+    "layout": "3DK",
+    "location": "Chuo, Kobe",
+    "floor": 10,
+    "price_million_yen": 35
+  },
+  {
+    "id": 60,
+    "age_years": 18,
+    "layout": "1LDK",
+    "location": "Omiya, Saitama",
+    "floor": 6,
+    "price_million_yen": 29
+  },
+  {
+    "id": 61,
+    "age_years": 6,
+    "layout": "3DK",
+    "location": "Shibuya, Tokyo",
+    "floor": 5,
+    "price_million_yen": 65
+  },
+  {
+    "id": 62,
+    "age_years": 16,
+    "layout": "2LDK",
+    "location": "Kita, Osaka",
+    "floor": 9,
+    "price_million_yen": 47
+  },
+  {
+    "id": 63,
+    "age_years": 28,
+    "layout": "1DK",
+    "location": "Chuo, Sapporo",
+    "floor": 2,
+    "price_million_yen": 16
+  },
+  {
+    "id": 64,
+    "age_years": 11,
+    "layout": "3LDK",
+    "location": "Kohoku, Yokohama",
+    "floor": 7,
+    "price_million_yen": 49
+  },
+  {
+    "id": 65,
+    "age_years": 12,
+    "layout": "4LDK",
+    "location": "Naka, Nagoya",
+    "floor": 8,
+    "price_million_yen": 35
+  },
+  {
+    "id": 66,
+    "age_years": 5,
+    "layout": "1LDK",
+    "location": "Hakata, Fukuoka",
+    "floor": 5,
+    "price_million_yen": 27
+  },
+  {
+    "id": 67,
+    "age_years": 21,
+    "layout": "2LDK",
+    "location": "Sakyo, Kyoto",
+    "floor": 1,
+    "price_million_yen": 24
+  },
+  {
+    "id": 68,
+    "age_years": 29,
+    "layout": "3LDK",
+    "location": "Aoba, Sendai",
+    "floor": 9,
+    "price_million_yen": 31
+  },
+  {
+    "id": 69,
+    "age_years": 9,
+    "layout": "1DK",
+    "location": "Chuo, Kobe",
+    "floor": 4,
+    "price_million_yen": 34
+  },
+  {
+    "id": 70,
+    "age_years": 17,
+    "layout": "3LDK",
+    "location": "Omiya, Saitama",
+    "floor": 7,
+    "price_million_yen": 28
+  },
+  {
+    "id": 71,
+    "age_years": 7,
+    "layout": "2LDK",
+    "location": "Shibuya, Tokyo",
+    "floor": 6,
+    "price_million_yen": 63
+  },
+  {
+    "id": 72,
+    "age_years": 17,
+    "layout": "3LDK",
+    "location": "Kita, Osaka",
+    "floor": 10,
+    "price_million_yen": 50
+  },
+  {
+    "id": 73,
+    "age_years": 27,
+    "layout": "1DK",
+    "location": "Chuo, Sapporo",
+    "floor": 5,
+    "price_million_yen": 17
+  },
+  {
+    "id": 74,
+    "age_years": 12,
+    "layout": "2LDK",
+    "location": "Kohoku, Yokohama",
+    "floor": 8,
+    "price_million_yen": 47
+  },
+  {
+    "id": 75,
+    "age_years": 13,
+    "layout": "3DK",
+    "location": "Naka, Nagoya",
+    "floor": 9,
+    "price_million_yen": 31
+  },
+  {
+    "id": 76,
+    "age_years": 6,
+    "layout": "1DK",
+    "location": "Hakata, Fukuoka",
+    "floor": 6,
+    "price_million_yen": 28
+  },
+  {
+    "id": 77,
+    "age_years": 20,
+    "layout": "3LDK",
+    "location": "Sakyo, Kyoto",
+    "floor": 3,
+    "price_million_yen": 26
+  },
+  {
+    "id": 78,
+    "age_years": 30,
+    "layout": "4LDK",
+    "location": "Aoba, Sendai",
+    "floor": 10,
+    "price_million_yen": 30
+  },
+  {
+    "id": 79,
+    "age_years": 8,
+    "layout": "2LDK",
+    "location": "Chuo, Kobe",
+    "floor": 5,
+    "price_million_yen": 36
+  },
+  {
+    "id": 80,
+    "age_years": 15,
+    "layout": "1LDK",
+    "location": "Omiya, Saitama",
+    "floor": 8,
+    "price_million_yen": 27
+  },
+  {
+    "id": 81,
+    "age_years": 5,
+    "layout": "3LDK",
+    "location": "Shibuya, Tokyo",
+    "floor": 4,
+    "price_million_yen": 69
+  },
+  {
+    "id": 82,
+    "age_years": 18,
+    "layout": "2LDK",
+    "location": "Kita, Osaka",
+    "floor": 11,
+    "price_million_yen": 51
+  },
+  {
+    "id": 83,
+    "age_years": 29,
+    "layout": "1DK",
+    "location": "Chuo, Sapporo",
+    "floor": 6,
+    "price_million_yen": 15
+  },
+  {
+    "id": 84,
+    "age_years": 13,
+    "layout": "4LDK",
+    "location": "Kohoku, Yokohama",
+    "floor": 9,
+    "price_million_yen": 48
+  },
+  {
+    "id": 85,
+    "age_years": 14,
+    "layout": "2LDK",
+    "location": "Naka, Nagoya",
+    "floor": 10,
+    "price_million_yen": 32
+  },
+  {
+    "id": 86,
+    "age_years": 7,
+    "layout": "1LDK",
+    "location": "Hakata, Fukuoka",
+    "floor": 7,
+    "price_million_yen": 29
+  },
+  {
+    "id": 87,
+    "age_years": 22,
+    "layout": "3DK",
+    "location": "Sakyo, Kyoto",
+    "floor": 4,
+    "price_million_yen": 22
+  },
+  {
+    "id": 88,
+    "age_years": 28,
+    "layout": "2LDK",
+    "location": "Aoba, Sendai",
+    "floor": 11,
+    "price_million_yen": 32
+  },
+  {
+    "id": 89,
+    "age_years": 10,
+    "layout": "3LDK",
+    "location": "Chuo, Kobe",
+    "floor": 3,
+    "price_million_yen": 38
+  },
+  {
+    "id": 90,
+    "age_years": 16,
+    "layout": "1DK",
+    "location": "Omiya, Saitama",
+    "floor": 9,
+    "price_million_yen": 26
+  },
+  {
+    "id": 91,
+    "age_years": 4,
+    "layout": "2LDK",
+    "location": "Shibuya, Tokyo",
+    "floor": 3,
+    "price_million_yen": 67
+  },
+  {
+    "id": 92,
+    "age_years": 19,
+    "layout": "3LDK",
+    "location": "Kita, Osaka",
+    "floor": 12,
+    "price_million_yen": 53
+  },
+  {
+    "id": 93,
+    "age_years": 30,
+    "layout": "1DK",
+    "location": "Chuo, Sapporo",
+    "floor": 7,
+    "price_million_yen": 14
+  },
+  {
+    "id": 94,
+    "age_years": 14,
+    "layout": "3DK",
+    "location": "Kohoku, Yokohama",
+    "floor": 10,
+    "price_million_yen": 46
+  },
+  {
+    "id": 95,
+    "age_years": 10,
+    "layout": "2LDK",
+    "location": "Naka, Nagoya",
+    "floor": 11,
+    "price_million_yen": 37
+  },
+  {
+    "id": 96,
+    "age_years": 8,
+    "layout": "1DK",
+    "location": "Hakata, Fukuoka",
+    "floor": 8,
+    "price_million_yen": 30
+  },
+  {
+    "id": 97,
+    "age_years": 23,
+    "layout": "3LDK",
+    "location": "Sakyo, Kyoto",
+    "floor": 5,
+    "price_million_yen": 25
+  },
+  {
+    "id": 98,
+    "age_years": 26,
+    "layout": "4LDK",
+    "location": "Aoba, Sendai",
+    "floor": 12,
+    "price_million_yen": 33
+  },
+  {
+    "id": 99,
+    "age_years": 11,
+    "layout": "2LDK",
+    "location": "Chuo, Kobe",
+    "floor": 2,
+    "price_million_yen": 39
+  },
+  {
+    "id": 100,
+    "age_years": 20,
+    "layout": "3DK",
+    "location": "Omiya, Saitama",
+    "floor": 10,
+    "price_million_yen": 25
+  }
+]
