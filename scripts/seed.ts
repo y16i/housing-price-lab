@@ -1,6 +1,6 @@
-import { db } from "./app/lib/db/index";
-import { houses } from "./app/lib/db/schema";
-import dummyData from "./app/api/dummy-data.json";
+import { db } from "../app/lib/db/index";
+import { houses } from "../app/lib/db/schema";
+import dummyData from "../app/api/dummy-data.json";
 
 async function seed() {
   try {
