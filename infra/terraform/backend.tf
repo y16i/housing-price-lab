@@ -3,7 +3,7 @@
 #
 # Prerequisites:
 # 1. Create a GCS bucket for storing Terraform state
-# 2. Set the TF_VAR_backend_bucket environment variable or pass via -backend-config flag
+# 2. Pass the bucket name via -backend-config flag during terraform init
 # 3. Ensure the service account has Storage Object Admin permissions on the bucket
 #
 # Example initialization:
@@ -11,12 +11,9 @@
 
 terraform {
   backend "gcs" {
-    # Backend bucket should be specified via:
-    # 1. TF_VAR_backend_bucket environment variable, or
-    # 2. -backend-config="bucket=..." flag during terraform init
-    # 
+    # Backend bucket must be specified via -backend-config flag during terraform init
     # Example: terraform init -backend-config="bucket=my-terraform-state-bucket"
-    
+
     prefix = "terraform/state"
   }
 }
