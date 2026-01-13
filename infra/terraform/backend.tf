@@ -4,7 +4,12 @@
 # Prerequisites:
 # 1. Create a GCS bucket for storing Terraform state
 # 2. Pass the bucket name via -backend-config flag during terraform init
-# 3. Ensure the service account has Storage Object Admin permissions on the bucket
+# 3. Ensure the service account has the following permissions on the bucket:
+#    - storage.objects.create
+#    - storage.objects.delete
+#    - storage.objects.get
+#    - storage.objects.list
+#    (Or use the predefined 'Storage Object User' role)
 #
 # Example initialization:
 #   terraform init -backend-config="bucket=your-terraform-state-bucket"

@@ -6,8 +6,9 @@ This directory contains Terraform configuration for deploying the application to
 
 1. **GCP Project**: A Google Cloud Platform project with billing enabled
 2. **Service Account**: A service account with the following permissions:
-   - Cloud Run Admin
-   - Storage Object Admin (for Terraform state)
+   - Cloud Run Developer (for deploying Cloud Run services)
+   - Storage Object User (for Terraform state operations)
+   - Service Account User (for deploying as a service account)
 3. **GCS Bucket**: A Google Cloud Storage bucket for storing Terraform state
 
 ## Backend Configuration
@@ -19,9 +20,9 @@ Terraform state is stored in a GCS bucket to ensure:
 
 ### Setting up the Backend Bucket
 
-1. Create a GCS bucket for Terraform state:
+1. Create a GCS bucket for Terraform state (use your preferred region):
    ```bash
-   gsutil mb -p YOUR_PROJECT_ID -l asia-northeast1 gs://YOUR_BUCKET_NAME
+   gsutil mb -p YOUR_PROJECT_ID -l REGION gs://YOUR_BUCKET_NAME
    ```
 
 2. Enable versioning (recommended):
