@@ -107,9 +107,10 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(filtered, { headers: corsHeaders });
   } catch (error) {
-    console.error('Error fetching houses:', error);
+    const errorCode = 'HOUSES_FETCH_ERROR';
+    console.error('Error fetching houses:', { error, errorCode });
     return NextResponse.json(
-      { error: 'Failed to fetch houses' },
+      { error: 'Failed to fetch houses', errorCode },
       { status: 500, headers: corsHeaders }
     );
   }
