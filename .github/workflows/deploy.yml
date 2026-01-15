@@ -2,8 +2,7 @@ name: Deploy to Cloud Run
 
 on:
   push:
-    branches:
-      - main
+    branches: "main"
 
 env:
   REGISTRY: gcr.io
@@ -54,8 +53,6 @@ jobs:
       id-token: write
 
     steps:
-      - name: debug
-        run: echo ${{ toJSON(secrets) }}
       - name: Checkout repo
         uses: actions/checkout@v4
 
