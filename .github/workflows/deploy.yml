@@ -54,7 +54,7 @@ jobs:
 
     steps:
       - name: debug
-        run: echo ${{secrets}}
+        run: echo ${{ toJSON(secrets) }}
       - name: Checkout repo
         uses: actions/checkout@v4
 
