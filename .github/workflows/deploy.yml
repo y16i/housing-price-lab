@@ -61,7 +61,8 @@ jobs:
         uses: google-github-actions/auth@v3
         with:
           workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
-          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+          # service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+          project_id: 'housing-prie-lab'
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
