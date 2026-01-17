@@ -73,6 +73,7 @@ jobs:
       - name: Build and push image
         run: |
           IMAGE=${{ env.REGISTRY }}/${{ secrets.GCP_PROJECT }}/autovalue-insight:${{ github.sha }}
+          echo ${IMAGE}
           docker build -t $IMAGE .
           docker push $IMAGE
           echo "IMAGE_URL=$IMAGE" >> $GITHUB_ENV
