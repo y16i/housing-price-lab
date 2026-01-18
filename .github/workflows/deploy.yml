@@ -5,7 +5,7 @@ on:
     branches: "main"
 
 env:
-  REGISTRY: gcr.io
+  REGISTRY: us-docker.pkg.dev
 
 jobs:
   test:
@@ -68,11 +68,11 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
 
       - name: Configure Docker auth
-        run: gcloud auth configure-docker gcr.io --quiet
+        run: gcloud auth configure-docker us-docker.pkg.dev --quiet
 
       - name: Build and push image
         run: |
-          IMAGE=${{ env.REGISTRY }}/${{ secrets.GCP_PROJECT }}/autovalue-insight:${{ github.sha }}
+          IMAGE=${{ env.REGISTRY }}/housing-prie-lab/gcr.io/autovalue-insight:${{ github.sha }}
           echo ${IMAGE}
           docker build -t $IMAGE .
           docker push $IMAGE
