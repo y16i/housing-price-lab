@@ -57,6 +57,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Debug GitHub Context
+        run: |
+          echo "Actor: ${{ github.actor }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Repository Owner: ${{ github.repository_owner }}"
+
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v3
         with:
