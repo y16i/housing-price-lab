@@ -14,6 +14,10 @@ resource "google_cloud_run_service" "nextjs" {
           name  = "NODE_ENV"
           value = "production"
         }
+        env {
+          name  = "ALLOWED_ORIGIN"
+          value = var.allowed_origin
+        }
       }
     }
   }

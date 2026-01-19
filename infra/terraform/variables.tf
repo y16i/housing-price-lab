@@ -16,3 +16,9 @@ variable "image_url" {
   type        = string
   description = "Docker image URL for Cloud Run deployment"
 }
+
+variable "allowed_origin" {
+  type        = string
+  default     = "http://localhost:4200"
+  description = "CORS allowed origin for the API"
+}

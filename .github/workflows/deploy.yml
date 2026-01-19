@@ -90,4 +90,5 @@ jobs:
         env:
           TF_VAR_project_id: ${{ secrets.GCP_PROJECT }}
           TF_VAR_image_url: ${{ env.IMAGE_URL }}
+          TF_VAR_allowed_origin: ${{ secrets.ANGULAR_APP_URL }}
         run: terraform apply -auto-approve
