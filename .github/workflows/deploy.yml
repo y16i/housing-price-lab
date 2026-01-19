@@ -57,16 +57,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Debug GitHub Context
-        run: |
-          echo "Actor: ${{ github.actor }}"
-          echo "Repository: ${{ github.repository }}"
-          echo "Repository Owner: ${{ github.repository_owner }}"
-
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v3
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: github-actions@housing-prie-lab.iam.gserviceaccount.com
+          project_id: 'housing-prie-lab'
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
