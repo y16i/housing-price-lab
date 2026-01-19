@@ -4,7 +4,7 @@ resource "google_cloud_run_service" "nextjs" {
 
   template {
     spec {
-      service_account_name = google_service_account.cloudrun.email
+      service_account_name = data.google_service_account.cloudrun.email
       containers {
         image = var.image_url
         ports {
@@ -24,15 +24,8 @@ resource "google_cloud_run_service" "nextjs" {
   }
 }
 
-resource "google_service_account" "cloudrun" {
-  account_id   = "housing-price-lab-run"
-  display_name = "Cloud Run Service Account"
-}
-
-resource "google_service_account_iam_member" "github_actions_impersonate" {
-  service_account_id = google_service_account.cloudrun.name
-  role               = "roles/iam.serviceAccountUser"
-  member             = "serviceAccount:github-actions@housing-prie-lab.iam.gserviceaccount.com"
+data "google_service_account" "cloudrun" {
+  account_id = "housing-price-lab-run"
 }
 
 resource "google_cloud_run_service_iam_member" "public" {
