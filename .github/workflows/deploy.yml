@@ -78,6 +78,9 @@ jobs:
           docker push $IMAGE
           echo "IMAGE_URL=$IMAGE" >> $GITHUB_ENV
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
       - name: Terraform Init
         working-directory: infra/terraform
         run: terraform init -backend-config="bucket=${{ secrets.TF_STATE_BUCKET }}"
