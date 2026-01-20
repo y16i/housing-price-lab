@@ -1,20 +1,16 @@
 import type { Config } from 'tailwindcss'
 
-const config: Config = {
+export default {
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    './app/components/**/*.{js,ts,jsx,tsx}',
+    './app/pages/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
-      colors: {
-        primary: '#2563eb',
-      },
       fontFamily: {
         sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
       },
     },
   },
-  plugins: [],
-}
-export default config
+} satisfies Config

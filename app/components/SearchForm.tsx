@@ -141,7 +141,7 @@ export default function SearchForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors duration-200 disabled:opacity-50"
+        className="w-full bg-primary text-white font-semibold py-3 px-4 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 transition-colors duration-200 shadow-md hover:shadow-lg"
       >
         {loading ? 'Searching...' : 'Search'}
       </button>
