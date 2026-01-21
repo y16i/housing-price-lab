@@ -1,22 +1,11 @@
-# Housing Price Lab MVP
-
+# Demo: Housing Price Analysis
 A Next.js application for analyzing housing prices with filtering and visualization using Echarts.
 
 ## Tech Stack
 
-- **Frontend**: Next.js 15+, React 19, TypeScript, Tailwind CSS
-- **Charts**: Echarts
-- **Database**: PostgreSQL with Drizzle ORM (optional)
-- **Deployment**: GCP Cloud Run
-
-## Features
-
-- Filter houses by layout, age, location, and floor
-- Calculate and display average price, median, price range
-- Visualize price distribution with interactive charts
-- Responsive design for all devices
-- Works with dummy JSON data out of the box
-- Optional PostgreSQL integration with Drizzle ORM
+- **Frontend**: Next.js 15+, React 19, TypeScript, Tailwind CSS, EChart
+- **Backend**: Next.js 15+, React 19, Typescript
+- **Deployment**: Github action, terraform and GCP Cloud Run
 
 ## Quick Start
 
@@ -26,7 +15,7 @@ A Next.js application for analyzing housing prices with filtering and visualizat
 npm install
 ```
 
-### 2. Run Locally (Dummy Data)
+### 2. Run Locally
 
 ```bash
 npm run dev
@@ -108,31 +97,17 @@ The application includes a Dockerfile optimized for GCP Cloud Run.
 docker build -t housing-price-lab:latest .
 ```
 
-### Run Container Locally
+### Deploy to Cloud Run
+Github actions
 
 ```bash
-docker run -p 3000:3000 -e NODE_ENV=production housing-price-lab:latest
+.github/workflows/deploy.yml
 ```
 
-### Deploy to Cloud Run
-
-Using Terraform:
+Terraform:
 
 ```bash
-cd infra/terraform
-
-# Initialize Terraform
-terraform init
-
-# Plan deployment
-terraform plan \
-  -var="project_id=YOUR_PROJECT_ID" \
-  -var="image_url=gcr.io/YOUR_PROJECT_ID/housing-price-lab:latest"
-
-# Apply
-terraform apply \
-  -var="project_id=YOUR_PROJECT_ID" \
-  -var="image_url=gcr.io/YOUR_PROJECT_ID/housing-price-lab:latest"
+infra/terraform
 ```
 
 ## Project Structure
@@ -181,49 +156,6 @@ NODE_ENV=production
 PORT=3000
 ```
 
-## Development
+## Related Project
 
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run db:generate` - Generate Drizzle migrations
-- `npm run db:migrate` - Run migrations
-- `npm run db:seed` - Seed database with dummy data
-
-## Testing
-
-The application comes with 100 sample houses across various Japanese cities:
-- Tokyo (Shibuya, Chuo)
-- Osaka (Kita, Naka)
-- Sapporo (Chuo)
-- Yokohama (Kohoku)
-- Nagoya (Naka)
-- Fukuoka (Hakata)
-- Kyoto (Sakyo)
-- Sendai (Aoba)
-- Kobe (Chuo)
-- Saitama (Omiya)
-
-### Test Filters
-
-Try these filter combinations:
-
-1. Layout: 2LDK, Location: Shibuya, Tokyo
-2. Age Range: 0-10 years
-3. Floor: 5+
-4. Location: Kita, Osaka + Layout: 3LDK
-
-## Performance
-
-- Stateless API design suitable for serverless
-- Efficient filtering with early returns
-- Optimized Echarts visualization
-- CSS-in-JS with Tailwind for minimal bundle
-- NextJS automatic code splitting
-
-## License
-
-See LICENSE file
+- [housing-price-lab](https://github.com/y16i/ngx-housing-price-lab) - Angular frontend that consumes this Next.js backend

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Housing Average Price',
+  title: 'Demo: Housing Price Analysis',
   description: 'Housing price analysis and visualization tool',
 };
 
