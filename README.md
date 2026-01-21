@@ -1,6 +1,9 @@
 # Demo: Housing Price Analysis
 A Next.js application for analyzing housing prices with filtering and visualization using Echarts.
 
+Running at https://autovalue-insight-2w7oequsua-an.a.run.app/
+
+
 ## Tech Stack
 
 - **Frontend**: Next.js 15+, React 19, TypeScript, Tailwind CSS, EChart
