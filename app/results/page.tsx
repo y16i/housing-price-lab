@@ -1,11 +1,13 @@
 'use client';
 
-import { Suspense } from 'react';
-import { useEffect, useState } from 'react';
+import { Suspense, useState } from 'react';
+import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import SummaryCard from '@/app/components/SummaryCard';
 import PriceChart from '@/app/components/PriceChart';
+import FilterSidebar from '@/app/components/FilterSidebar';
+import FilterModal from '@/app/components/FilterModal';
 import { calcStats, House } from '@/app/lib/calcStats';
 
 interface Filters {
@@ -21,6 +23,12 @@ function ResultsContent() {
   const [data, setData] = useState<House[]>([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState<Filters>({});
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [layout, setLayout] = useState('');
+  const [minYear, setMinYear] = useState('');
+  const [maxYear, setMaxYear] = useState('');
+  const [location, setLocation] = useState('');
+  const [floor, setFloor] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,6 +53,11 @@ function ResultsContent() {
         const houses = await response.json();
 
         setData(houses);
+        setLayout(layout || '');
+        setMinYear(minYear || '');
+        setMaxYear(maxYear || '');
+        setLocation(location || '');
+        setFloor(floor || '');
         setFilters({ layout, minYear, maxYear, location, floor });
       } catch (error) {
         console.error('Failed to fetch data:', error);
@@ -55,6 +68,40 @@ function ResultsContent() {
 
     fetchData();
   }, [searchParams]);
+
+  const handleFilterChange = (newFilters: {
+    layout: string;
+    minYear: string;
+    maxYear: string;
+    location: string;
+    floor: string;
+  }) => {
+    setLayout(newFilters.layout);
+    setMinYear(newFilters.minYear);
+    setMaxYear(newFilters.maxYear);
+    setLocation(newFilters.location);
+    setFloor(newFilters.floor);
+
+    const params = new URLSearchParams();
+    if (newFilters.layout) params.append('layout', newFilters.layout);
+    if (newFilters.minYear) params.append('minYear', newFilters.minYear);
+    if (newFilters.maxYear) params.append('maxYear', newFilters.maxYear);
+    if (newFilters.location) params.append('location', newFilters.location);
+    if (newFilters.floor) params.append('floor', newFilters.floor);
+
+    window.history.replaceState(null, '', `/results?${params.toString()}`);
+    setFilters(newFilters);
+  };
+
+  const handleReset = () => {
+    setLayout('');
+    setMinYear('');
+    setMaxYear('');
+    setLocation('');
+    setFloor('');
+    setFilters({});
+    window.history.replaceState(null, '', '/results');
+  };
 
   if (loading) {
     return (
@@ -70,46 +117,78 @@ function ResultsContent() {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        {/* Header */}
+      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        {/* Header with Filter Button for Mobile */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Analysis Results</h1>
-          <p className="text-gray-600">
-            {data.length > 0
-              ? `Found ${data.length} properties matching your criteria`
-              : 'No properties found matching your criteria'}
-          </p>
+          <div className="flex items-center justify-between mb-4">
+            <Link href="/" className="text-primary font-medium hover:underline">
+              ← Back to Home
+            </Link>
+            {/* Mobile Filter Button */}
+            <button
+              onClick={() => setIsFilterModalOpen(true)}
+              className="lg:hidden bg-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+            >
+              Filter
+            </button>
+          </div>
+          <h1 className="text-4xl font-bold text-gray-900">Analysis Results</h1>
         </div>
 
-        {/* Summary Statistics */}
-        {data.length > 0 && <SummaryCard stats={stats} filters={filters} />}
-
-        {/* Chart */}
-        {data.length > 0 && <PriceChart data={data} />}
-
-        {/* Empty State */}
-        {data.length === 0 && (
-          <div className="bg-gray-50 rounded-xl p-12 text-center">
-            <p className="text-gray-600 mb-6">No properties match your search criteria.</p>
-            <Link
-              href="/"
-              className="inline-block bg-primary hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg"
-            >
-              Try Different Filters
-            </Link>
+        {/* Results with Sidebar */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Left Sidebar - Filters (Hidden on Mobile) */}
+          <div className="hidden lg:block lg:col-span-1">
+            <FilterSidebar
+              layout={layout}
+              minYear={minYear}
+              maxYear={maxYear}
+              location={location}
+              floor={floor}
+              onFilterChange={handleFilterChange}
+              onReset={handleReset}
+            />
           </div>
-        )}
 
-        {/* Search Again Button */}
-        <div className="mt-12 flex justify-center">
-          <Link
-            href="/"
-            className="inline-block bg-primary hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-colors duration-200"
-          >
-            ← Search Again
-          </Link>
+          {/* Right Side - Results */}
+          <div className="lg:col-span-3">
+            {/* Results Content */}
+            {data.length > 0 ? (
+              <div>
+                {/* Summary Cards */}
+                <SummaryCard stats={stats} filters={filters} />
+
+                {/* Price Chart */}
+                <div className="mt-8">
+                  <PriceChart data={data} />
+                </div>
+              </div>
+            ) : (
+              /* Empty State */
+              <div className="text-center py-12">
+                <p className="text-gray-600 mb-4">
+                  No data available for the selected filters.
+                  <br />
+                  Try different filters
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
+
+      {/* Filter Modal (Mobile) */}
+      <FilterModal
+        isOpen={isFilterModalOpen}
+        layout={layout}
+        minYear={minYear}
+        maxYear={maxYear}
+        location={location}
+        floor={floor}
+        onClose={() => setIsFilterModalOpen(false)}
+        onFilterChange={handleFilterChange}
+        onReset={handleReset}
+      />
     </div>
   );
 }
