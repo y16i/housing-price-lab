@@ -9,6 +9,7 @@ import PriceChart from '@/app/components/PriceChart';
 import FilterSidebar from '@/app/components/FilterSidebar';
 import FilterModal from '@/app/components/FilterModal';
 import { calcStats, House } from '@/app/lib/calcStats';
+import { FilterValues } from '@/app/types/filters';
 
 interface Filters {
   layout?: string | null;
@@ -69,13 +70,7 @@ function ResultsContent() {
     fetchData();
   }, [searchParams]);
 
-  const handleFilterChange = (newFilters: {
-    layout: string;
-    minYear: string;
-    maxYear: string;
-    location: string;
-    floor: string;
-  }) => {
+  const handleFilterChange = (newFilters: FilterValues) => {
     setLayout(newFilters.layout);
     setMinYear(newFilters.minYear);
     setMaxYear(newFilters.maxYear);

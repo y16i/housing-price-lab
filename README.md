@@ -1,164 +1,117 @@
-# Demo: Housing Price Analysis
-A Next.js application for analyzing housing prices with filtering and visualization using Echarts.
+# Housing Price Lab
 
-Running at https://autovalue-insight-2w7oequsua-an.a.run.app/
+A full‑stack web application that visualizes housing price trends using modern web technologies.  
+This project demonstrates end‑to‑end skills across frontend development, backend integration, cloud infrastructure, and automated deployment.
+
+Live Demo:  
+<a href="https://autovalue-insight-2w7oequsua-an.a.run.app/" target="_blank">https://autovalue-insight-2w7oequsua-an.a.run.app/</a>
 
 
-## Tech Stack
+## 🚀 Features
 
-- **Frontend**: Next.js 15+, React 19, TypeScript, Tailwind CSS, EChart
-- **Backend**: Next.js 15+, React 19, Typescript
-- **Deployment**: Github action, terraform and GCP Cloud Run
+- Interactive housing price dashboard  
+- Prefecture‑level and city‑level filtering  
+- Dynamic charts and data visualization  
+- Responsive UI optimized for desktop and mobile  
+- API‑driven architecture  
+- Fully automated cloud deployment using Terraform + Google Cloud Platform
 
-## Quick Start
 
-### 1. Install Dependencies
+## 🛠 Tech Stack
+
+### **Frontend**
+- Next.js 14 (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- EChart
+
+### **Infrastructure / DevOps**
+- Terraform (Infrastructure as Code)
+- Google Cloud Run
+- Google Artifact Registry
+- Google Cloud Build
+- Google Cloud Storage
+- CI/CD pipeline
+
+---
+
+## 🧱 Architecture Overview
+User → Next.js App → API Layer → Housing Price Dataset
+↓
+Deployed via Terraform → GCP (Cloud Run)
+
+
+This setup ensures:
+- Reproducible infrastructure  
+- Fast, scalable deployment  
+- Low‑maintenance hosting  
+- Clear separation between frontend, backend, and infrastructure
+
+---
+
+## 🌐 Live Deployment
+
+The application is deployed on **Google Cloud Run** using **Terraform** for full reproducibility.
+
+- **Frontend**: Next.js app containerized and deployed to Cloud Run  
+- **Infrastructure**: Managed entirely via Terraform  
+- **Build & Deploy**: Automated through Cloud Build triggers  
+
+This mirrors a production‑ready workflow used in modern SaaS applications.
+
+---
+
+## 📂 Project Structure
+```
+housing-price-lab/
+├── app/                # Next.js app router pages
+├── components/         # UI components
+├── lib/                # Data utilities
+├── public/             # Static assets
+├── terraform/          # IaC for GCP deployment
+└── Dockerfile          # Container build
+```
+
+## 📊 Screenshots
+
+![home](./images/01-Home.png)
+![Result](./images/02-Result.png)
+
+
+## 🧪 Local Development
 
 ```bash
 npm install
-```
-
-### 2. Run Locally
-
-```bash
 npm run dev
 ```
 
-Visit `http://localhost:3000`
+App runs at:
+http://localhost:3000
 
-The app will work with dummy JSON data by default at `/app/api/dummy-data.json`.
+## ☁️ Deployment (Terraform + GCP)
+1. 	Authenticate with GCP
+2. 	Configure project ID and region
+3. 	Deploy infrastructure:
 
-### 3. Optional: Setup PostgreSQL with Drizzle
+4. 	Build and deploy the container:
 
-#### Prerequisites
-- PostgreSQL database running
-- `DATABASE_URL` environment variable set
 
-#### Setup Steps
+🎯 What This Project Demonstrates
+This repository showcases capabilities relevant to real‑world SaaS and dashboard development:
+• 	Full‑stack web application development
+• 	Modern React / Next.js architecture
+• 	Data visualization and dashboard UI
+• 	Cloud‑native deployment
+• 	Infrastructure as Code (Terraform)
+• 	CI/CD automation
+• 	Production‑ready containerized workflow
+If you're looking for a developer who can build dashboards, admin panels, analytics tools, or cloud‑deployed web apps, this project reflects that skill set.
 
-1. Create `.env.local`:
-```bash
-DATABASE_URL=postgresql://user:password@localhost:5432/housing_db
-USE_DATABASE=true
-```
+📬 Contact
+If you’d like to collaborate or need a custom dashboard / web application:
+Email:
+y16i.dev@gmail.com
+GitHub:
+https://github.com/y16i
 
-2. Generate and run migrations:
-```bash
-npm run db:generate
-npm run db:migrate
-```
-
-3. Seed the database with dummy data:
-```bash
-npm run db:seed
-```
-
-4. Start the app:
-```bash
-npm run dev
-```
-
-## Database Schema
-
-The application uses a single `houses` table with the following structure:
-
-```
-houses
-├── id: serial (primary key)
-├── age_years: integer
-├── layout: varchar (e.g., "2LDK", "3LDK")
-├── location: varchar (e.g., "Shibuya, Tokyo")
-├── floor: integer
-└── price_million_yen: integer
-```
-
-## API Endpoints
-
-### GET `/api/houses`
-
-Returns filtered house data.
-
-**Query Parameters:**
-- `layout`: Filter by layout type
-- `minYear`: Minimum building age
-- `maxYear`: Maximum building age
-- `location`: Filter by location
-- `floor`: Filter by floor number
-
-**Example:**
-```bash
-GET /api/houses?layout=2LDK&location=Shibuya,%20Tokyo&minYear=5&maxYear=15
-```
-
-## Building for Cloud Run
-
-The application includes a Dockerfile optimized for GCP Cloud Run.
-
-### Build Docker Image
-
-```bash
-docker build -t housing-price-lab:latest .
-```
-
-### Deploy to Cloud Run
-Github actions
-
-```bash
-.github/workflows/deploy.yml
-```
-
-Terraform:
-
-```bash
-infra/terraform
-```
-
-## Project Structure
-
-```
-app/
-├── page.tsx                 # Home/search page
-├── results/page.tsx         # Results page
-├── api/
-│   ├── houses/route.ts      # API endpoint with DB fallback
-│   └── dummy-data.json      # Sample data (100 houses)
-├── components/
-│   ├── SearchForm.tsx       # Filter form
-│   ├── SummaryCard.tsx      # Statistics display
-│   └── PriceChart.tsx       # Price visualization
-├── lib/
-│   ├── calcStats.ts         # Statistical calculations
-│   └── db/                  # Drizzle database setup
-│       ├── index.ts         # Database client
-│       ├── schema.ts        # Table definitions
-│       └── migrations/      # Generated migrations
-├── globals.css              # Global styles
-└── layout.tsx               # Root layout
-
-infra/terraform/
-├── providers.tf             # GCP provider config
-├── variables.tf             # Terraform variables
-├── cloudrun.tf              # Cloud Run resources
-└── outputs.tf               # Output values
-
-scripts/
-└── seed.ts                  # Database seeding script
-```
-
-## Environment Variables
-
-```env
-# Required for PostgreSQL
-DATABASE_URL=postgresql://user:password@host:port/database
-
-# Enable database usage (defaults to false = dummy data)
-USE_DATABASE=true
-
-# Node.js
-NODE_ENV=production
-PORT=3000
-```
-
-## Related Project
-
-- [housing-price-lab](https://github.com/y16i/ngx-housing-price-lab) - Angular frontend that consumes this Next.js backend

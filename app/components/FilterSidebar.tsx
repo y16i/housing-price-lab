@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { FilterValues } from '@/app/types/filters';
 
 const LAYOUTS = ['1DK', '2LDK', '3DK', '3LDK', '4LDK', '5LDK'];
 const LOCATIONS = [
@@ -23,6 +24,7 @@ interface FilterSidebarProps {
   maxYear: string;
   location: string;
   floor: string;
+  onFilterChange: (_filters: FilterValues) => void;
   onReset: () => void;
 }
 

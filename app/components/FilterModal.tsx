@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { FilterValues } from '@/app/types/filters';
 
 const LAYOUTS = ['1DK', '2LDK', '3DK', '3LDK', '4LDK', '5LDK'];
 const LOCATIONS = [
@@ -25,6 +26,7 @@ interface FilterModalProps {
   location: string;
   floor: string;
   onClose: () => void;
+  onFilterChange: (_filters: FilterValues) => void;
   onReset: () => void;
 }
 

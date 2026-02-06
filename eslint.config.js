@@ -51,10 +51,16 @@ module.exports = [
       'no-console': [
         'warn',
         {
-          allow: ['warn', 'error']
+          allow: ['warn', 'error', 'log']
         }
       ],
-      'no-undef': 'off'
+      'no-undef': 'off',
+      'no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_'
+        }
+      ]
     }
   },
   {
