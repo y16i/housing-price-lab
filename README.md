@@ -110,8 +110,8 @@ If you're looking for a developer who can build dashboards, admin panels, analyt
 
 📬 Contact
 If you’d like to collaborate or need a custom dashboard / web application:
-Email:
-y16i.dev@gmail.com
-GitHub:
-https://github.com/y16i
+
+Email: yoshiyuki.takahashi.jp@gmail.com
+
+GitHub: https://github.com/y16i
 
