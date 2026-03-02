@@ -11,7 +11,7 @@ export interface PriceRange {
 
 interface PriceChartProps {
   data: House[];
-  onBarClick?: (priceRange: PriceRange) => void;
+  onBarClick?: (_priceRange: PriceRange) => void;
 }
 
 export default function PriceChart({ data, onBarClick }: PriceChartProps) {
