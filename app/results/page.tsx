@@ -5,7 +5,8 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import SummaryCard from '@/app/components/SummaryCard';
-import PriceChart from '@/app/components/PriceChart';
+import PriceChart, { PriceRange } from '@/app/components/PriceChart';
+import HousesTable from '@/app/components/HousesTable';
 import FilterSidebar from '@/app/components/FilterSidebar';
 import FilterModal from '@/app/components/FilterModal';
 import { calcStats, House } from '@/app/lib/calcStats';
@@ -30,52 +31,63 @@ function ResultsContent() {
   const [maxYear, setMaxYear] = useState('');
   const [location, setLocation] = useState('');
   const [floor, setFloor] = useState('');
+  const [priceRange, setPriceRange] = useState<PriceRange | null>(null);
+
+  const fetchHouses = async (
+    layoutVal: string,
+    minYearVal: string,
+    maxYearVal: string,
+    locationVal: string,
+    floorVal: string
+  ) => {
+    setLoading(true);
+    try {
+      const params = new URLSearchParams();
+      if (layoutVal) params.append('layout', layoutVal);
+      if (minYearVal) params.append('minYear', minYearVal);
+      if (maxYearVal) params.append('maxYear', maxYearVal);
+      if (locationVal) params.append('location', locationVal);
+      if (floorVal) params.append('floor', floorVal);
+
+      const url = `/api/houses?${params.toString()}`;
+      console.log('Fetching houses with URL:', url);
+      const response = await fetch(url);
+      const houses = await response.json();
+      console.log('Received houses:', houses.length, 'houses');
+      setData(houses);
+    } catch (error) {
+      console.error('Failed to fetch data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const params = new URLSearchParams();
+    const layout = searchParams.get('layout');
+    const minYear = searchParams.get('minYear');
+    const maxYear = searchParams.get('maxYear');
+    const location = searchParams.get('location');
+    const floor = searchParams.get('floor');
 
-        // Get filter parameters from URL
-        const layout = searchParams.get('layout');
-        const minYear = searchParams.get('minYear');
-        const maxYear = searchParams.get('maxYear');
-        const location = searchParams.get('location');
-        const floor = searchParams.get('floor');
+    setLayout(layout || '');
+    setMinYear(minYear || '');
+    setMaxYear(maxYear || '');
+    setLocation(location || '');
+    setFloor(floor || '');
+    setFilters({ layout, minYear, maxYear, location, floor });
 
-        if (layout) params.append('layout', layout);
-        if (minYear) params.append('minYear', minYear);
-        if (maxYear) params.append('maxYear', maxYear);
-        if (location) params.append('location', location);
-        if (floor) params.append('floor', floor);
-
-        const response = await fetch(`/api/houses?${params.toString()}`);
-        const houses = await response.json();
-
-        setData(houses);
-        setLayout(layout || '');
-        setMinYear(minYear || '');
-        setMaxYear(maxYear || '');
-        setLocation(location || '');
-        setFloor(floor || '');
-        setFilters({ layout, minYear, maxYear, location, floor });
-      } catch (error) {
-        console.error('Failed to fetch data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    fetchHouses(layout || '', minYear || '', maxYear || '', location || '', floor || '');
   }, [searchParams]);
 
   const handleFilterChange = (newFilters: FilterValues) => {
+    console.log('handleFilterChange called with:', newFilters);
     setLayout(newFilters.layout);
     setMinYear(newFilters.minYear);
     setMaxYear(newFilters.maxYear);
     setLocation(newFilters.location);
     setFloor(newFilters.floor);
+    setPriceRange(null); // Reset price range when filters change
+    setFilters(newFilters);
 
     const params = new URLSearchParams();
     if (newFilters.layout) params.append('layout', newFilters.layout);
@@ -84,8 +96,24 @@ function ResultsContent() {
     if (newFilters.location) params.append('location', newFilters.location);
     if (newFilters.floor) params.append('floor', newFilters.floor);
 
+    console.log('URL params:', params.toString());
     window.history.replaceState(null, '', `/results?${params.toString()}`);
-    setFilters(newFilters);
+
+    // Fetch new data with the new filters
+    console.log('About to call fetchHouses with:', {
+      layout: newFilters.layout,
+      minYear: newFilters.minYear,
+      maxYear: newFilters.maxYear,
+      location: newFilters.location,
+      floor: newFilters.floor,
+    });
+    fetchHouses(
+      newFilters.layout,
+      newFilters.minYear,
+      newFilters.maxYear,
+      newFilters.location,
+      newFilters.floor
+    );
   };
 
   const handleReset = () => {
@@ -94,8 +122,17 @@ function ResultsContent() {
     setMaxYear('');
     setLocation('');
     setFloor('');
+    setPriceRange(null);
     setFilters({});
     window.history.replaceState(null, '', '/results');
+  };
+
+  const handleBarClick = (priceRange: PriceRange) => {
+    setPriceRange(priceRange);
+  };
+
+  const handleClearPriceFilter = () => {
+    setPriceRange(null);
   };
 
   if (loading) {
@@ -155,7 +192,40 @@ function ResultsContent() {
 
                 {/* Price Chart */}
                 <div className="mt-8">
-                  <PriceChart data={data} />
+                  <PriceChart data={data} onBarClick={handleBarClick} />
+                </div>
+
+                {/* Price Filter Display and Clear Button */}
+                {priceRange && (
+                  <div className="mt-6 flex items-center justify-between bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <p className="text-sm text-gray-700">
+                      Filtering by price range:{' '}
+                      <span className="font-semibold">
+                        ¥{priceRange.min.toFixed(2)}M - ¥{priceRange.max.toFixed(2)}M
+                      </span>
+                    </p>
+                    <button
+                      onClick={handleClearPriceFilter}
+                      className="text-sm bg-white text-blue-600 border border-blue-200 px-3 py-1 rounded hover:bg-blue-50 transition-colors"
+                    >
+                      Clear Filter
+                    </button>
+                  </div>
+                )}
+
+                {/* Houses Table */}
+                <div className="mt-8">
+                  <HousesTable
+                    data={
+                      priceRange
+                        ? data.filter(
+                            (house) =>
+                              house.price_million_yen >= priceRange.min &&
+                              house.price_million_yen <= priceRange.max
+                          )
+                        : data
+                    }
+                  />
                 </div>
               </div>
             ) : (
