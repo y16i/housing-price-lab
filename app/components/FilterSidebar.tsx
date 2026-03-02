@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { FilterValues } from '@/app/types/filters';
 
-const LAYOUTS = ['1DK', '2LDK', '3DK', '3LDK', '4LDK', '5LDK'];
+const LAYOUTS = ['1DK', '1LDK', '2LDK', '3DK', '3LDK', '4LDK', '5LDK'];
 const LOCATIONS = [
   'Shibuya, Tokyo',
   'Kita, Osaka',
@@ -51,16 +51,6 @@ export default function FilterSidebar({
     setLocalFloor(floor);
   }, [layout, minYear, maxYear, location, floor]);
 
-  const handleChange = () => {
-    onFilterChange({
-      layout: localLayout,
-      minYear: localMinYear,
-      maxYear: localMaxYear,
-      location: localLocation,
-      floor: localFloor,
-    });
-  };
-
   const handleReset = () => {
     setLocalLayout('');
     setLocalMinYear('');
@@ -80,8 +70,15 @@ export default function FilterSidebar({
         <select
           value={localLayout}
           onChange={(e) => {
-            setLocalLayout(e.target.value);
-            handleChange();
+            const newValue = e.target.value;
+            setLocalLayout(newValue);
+            onFilterChange({
+              layout: newValue,
+              minYear: localMinYear,
+              maxYear: localMaxYear,
+              location: localLocation,
+              floor: localFloor,
+            });
           }}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
         >
@@ -101,8 +98,15 @@ export default function FilterSidebar({
           type="number"
           value={localMinYear}
           onChange={(e) => {
-            setLocalMinYear(e.target.value);
-            handleChange();
+            const newValue = e.target.value;
+            setLocalMinYear(newValue);
+            onFilterChange({
+              layout: localLayout,
+              minYear: newValue,
+              maxYear: localMaxYear,
+              location: localLocation,
+              floor: localFloor,
+            });
           }}
           placeholder="0"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -115,8 +119,15 @@ export default function FilterSidebar({
           type="number"
           value={localMaxYear}
           onChange={(e) => {
-            setLocalMaxYear(e.target.value);
-            handleChange();
+            const newValue = e.target.value;
+            setLocalMaxYear(newValue);
+            onFilterChange({
+              layout: localLayout,
+              minYear: localMinYear,
+              maxYear: newValue,
+              location: localLocation,
+              floor: localFloor,
+            });
           }}
           placeholder="50"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -129,8 +140,15 @@ export default function FilterSidebar({
         <select
           value={localLocation}
           onChange={(e) => {
-            setLocalLocation(e.target.value);
-            handleChange();
+            const newValue = e.target.value;
+            setLocalLocation(newValue);
+            onFilterChange({
+              layout: localLayout,
+              minYear: localMinYear,
+              maxYear: localMaxYear,
+              location: newValue,
+              floor: localFloor,
+            });
           }}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
         >
@@ -149,8 +167,15 @@ export default function FilterSidebar({
         <select
           value={localFloor}
           onChange={(e) => {
-            setLocalFloor(e.target.value);
-            handleChange();
+            const newValue = e.target.value;
+            setLocalFloor(newValue);
+            onFilterChange({
+              layout: localLayout,
+              minYear: localMinYear,
+              maxYear: localMaxYear,
+              location: localLocation,
+              floor: newValue,
+            });
           }}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
         >

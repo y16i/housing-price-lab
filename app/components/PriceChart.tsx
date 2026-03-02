@@ -4,11 +4,17 @@ import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 import { House } from '@/app/lib/calcStats';
 
-interface PriceChartProps {
-  data: House[];
+export interface PriceRange {
+  min: number;
+  max: number;
 }
 
-export default function PriceChart({ data }: PriceChartProps) {
+interface PriceChartProps {
+  data: House[];
+  onBarClick?: (_priceRange: PriceRange) => void;
+}
+
+export default function PriceChart({ data, onBarClick }: PriceChartProps) {
   const chartRef = useRef<HTMLDivElement>(null);
   const chartInstanceRef = useRef<echarts.ECharts | null>(null);
 
@@ -33,19 +39,22 @@ export default function PriceChart({ data }: PriceChartProps) {
     const min = Math.min(...data.map((h) => h.price_million_yen));
     const max = Math.max(...data.map((h) => h.price_million_yen));
     const bucketSize = Math.ceil((max - min + 1) / 8);
-    const buckets: Record<string, number> = {};
+    const buckets: Record<string, { count: number; min: number; max: number }> = {};
 
     data.forEach((house) => {
       const bucketIndex = Math.floor((house.price_million_yen - min) / bucketSize);
-      const label = `¥${Math.round(min + bucketIndex * bucketSize)}-${Math.round(
-        min + (bucketIndex + 1) * bucketSize
-      )}M`;
+      const bucketMin = min + bucketIndex * bucketSize;
+      const bucketMax = min + (bucketIndex + 1) * bucketSize;
+      const label = `¥${Math.round(bucketMin)}-${Math.round(bucketMax)}M`;
 
-      buckets[label] = (buckets[label] || 0) + 1;
+      if (!buckets[label]) {
+        buckets[label] = { count: 0, min: bucketMin, max: bucketMax };
+      }
+      buckets[label].count += 1;
     });
 
     const labels = Object.keys(buckets);
-    const counts = Object.values(buckets);
+    const counts = labels.map((label) => buckets[label].count);
 
     const option: echarts.EChartsOption = {
       color: ['#2563eb'],
@@ -85,7 +94,20 @@ export default function PriceChart({ data }: PriceChartProps) {
     };
 
     chartInstanceRef.current.setOption(option);
-  }, [data]);
+
+    // Add click event handler
+    const clickHandler = (params: any) => {
+      if (params.componentSubType === 'bar' && onBarClick) {
+        const dataIndex = params.dataIndex;
+        const label = labels[dataIndex];
+        const range = buckets[label];
+        onBarClick({ min: range.min, max: range.max });
+      }
+    };
+
+    chartInstanceRef.current.off('click', clickHandler);
+    chartInstanceRef.current.on('click', clickHandler);
+  }, [data, onBarClick]);
 
   // Handle window resize
   useEffect(() => {
